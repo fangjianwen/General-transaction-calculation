@@ -1,0 +1,11 @@
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormDetail.resources
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormAddDetail.resources

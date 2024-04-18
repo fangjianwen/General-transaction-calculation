@@ -1,0 +1,14 @@
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\bin\Debug\WindowsFormsAppFruitCalc.exe.config
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\bin\Debug\WindowsFormsAppFruitCalc.exe
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\bin\Debug\WindowsFormsAppFruitCalc.pdb
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.csproj.AssemblyReference.cache
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.Properties.Resources.resources
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.csproj.GenerateResource.cache
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.csproj.CoreCompileInputs.cache
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.exe
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.pdb
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.FormEdit.resources
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.FormAbout.resources
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.FormAddDetail.resources
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.FormMain.resources
+D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.FormAddDetailBatch.resources
