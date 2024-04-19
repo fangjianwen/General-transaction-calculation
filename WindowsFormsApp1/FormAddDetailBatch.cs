@@ -114,7 +114,7 @@ namespace WindowsFormsAppFruitCalc
                 var list = GetMaoWeightList();
                 if (list.Count() == 0)
                 {
-                    MessageBox.Show("请输入称重记录,输入一条记录后,按【回车】键");
+                    MessageBox.Show("请输入称重记录,输入一条记录后,按【Enter】键");
                     rtbWeightList.Focus();
                     return;
                 }
