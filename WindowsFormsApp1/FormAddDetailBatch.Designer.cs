@@ -49,6 +49,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.labAvgT = new System.Windows.Forms.Label();
             this.lblAvg = new System.Windows.Forms.Label();
+            this.lblMax = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblMin = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtPrice
@@ -205,7 +209,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(13, 416);
+            this.label7.Location = new System.Drawing.Point(13, 491);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 14);
             this.label7.TabIndex = 30;
@@ -215,7 +219,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(93, 416);
+            this.label8.Location = new System.Drawing.Point(93, 491);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 14);
             this.label8.TabIndex = 31;
@@ -225,7 +229,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(12, 449);
+            this.label9.Location = new System.Drawing.Point(12, 524);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(122, 14);
             this.label9.TabIndex = 32;
@@ -235,7 +239,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(13, 485);
+            this.label10.Location = new System.Drawing.Point(13, 560);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(127, 14);
             this.label10.TabIndex = 33;
@@ -262,11 +266,57 @@
             this.lblAvg.TabIndex = 35;
             this.lblAvg.Text = "0";
             // 
+            // lblMax
+            // 
+            this.lblMax.AutoSize = true;
+            this.lblMax.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMax.ForeColor = System.Drawing.Color.Lime;
+            this.lblMax.Location = new System.Drawing.Point(96, 399);
+            this.lblMax.Name = "lblMax";
+            this.lblMax.Size = new System.Drawing.Size(23, 24);
+            this.lblMax.TabIndex = 37;
+            this.lblMax.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.Location = new System.Drawing.Point(3, 402);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 19);
+            this.label12.TabIndex = 36;
+            this.label12.Text = "最大毛重:";
+            // 
+            // lblMin
+            // 
+            this.lblMin.AutoSize = true;
+            this.lblMin.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMin.ForeColor = System.Drawing.Color.Red;
+            this.lblMin.Location = new System.Drawing.Point(95, 433);
+            this.lblMin.Name = "lblMin";
+            this.lblMin.Size = new System.Drawing.Size(23, 24);
+            this.lblMin.TabIndex = 39;
+            this.lblMin.Text = "0";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label14.Location = new System.Drawing.Point(5, 436);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(100, 19);
+            this.label14.TabIndex = 38;
+            this.label14.Text = "最小毛重:";
+            // 
             // FormAddDetailBatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 671);
+            this.Controls.Add(this.lblMin);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.lblMax);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.lblAvg);
             this.Controls.Add(this.labAvgT);
             this.Controls.Add(this.label10);
@@ -325,5 +375,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label labAvgT;
         private System.Windows.Forms.Label lblAvg;
+        private System.Windows.Forms.Label lblMax;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblMin;
+        private System.Windows.Forms.Label label14;
     }
 }
