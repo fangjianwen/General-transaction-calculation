@@ -72,8 +72,8 @@
             this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.批量录入称重记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.grvDetail)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -200,7 +200,7 @@
             this.btnAddDetail.Name = "btnAddDetail";
             this.btnAddDetail.Size = new System.Drawing.Size(403, 78);
             this.btnAddDetail.TabIndex = 1;
-            this.btnAddDetail.Text = "增加称重记录";
+            this.btnAddDetail.Text = "增加单次称重记录";
             this.btnAddDetail.UseVisualStyleBackColor = true;
             this.btnAddDetail.Click += new System.EventHandler(this.btnAddDetail_Click);
             // 
@@ -491,30 +491,30 @@
             // 
             this.Menu_Edit.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Edit.Image")));
             this.Menu_Edit.Name = "Menu_Edit";
-            this.Menu_Edit.Size = new System.Drawing.Size(180, 22);
+            this.Menu_Edit.Size = new System.Drawing.Size(172, 22);
             this.Menu_Edit.Text = "修改";
             this.Menu_Edit.Click += new System.EventHandler(this.Menu_Edit_Click);
             // 
             // 删除ToolStripMenuItem
             // 
             this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.删除ToolStripMenuItem.Text = "删除";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
-            // 
-            // 关于ToolStripMenuItem
-            // 
-            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.关于ToolStripMenuItem.Text = "关于";
-            this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
             // 批量录入称重记录ToolStripMenuItem
             // 
             this.批量录入称重记录ToolStripMenuItem.Name = "批量录入称重记录ToolStripMenuItem";
-            this.批量录入称重记录ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.批量录入称重记录ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.批量录入称重记录ToolStripMenuItem.Text = "批量录入称重记录";
             this.批量录入称重记录ToolStripMenuItem.Click += new System.EventHandler(this.批量录入称重记录ToolStripMenuItem_Click);
+            // 
+            // 关于ToolStripMenuItem
+            // 
+            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.关于ToolStripMenuItem.Text = "关于";
+            this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
             // FormMain
             // 

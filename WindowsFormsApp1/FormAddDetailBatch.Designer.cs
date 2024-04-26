@@ -149,7 +149,7 @@
             // 
             // rtbWeightList
             // 
-            this.rtbWeightList.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rtbWeightList.Font = new System.Drawing.Font("宋体", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rtbWeightList.Location = new System.Drawing.Point(216, 251);
             this.rtbWeightList.Name = "rtbWeightList";
             this.rtbWeightList.Size = new System.Drawing.Size(248, 321);
