@@ -47,6 +47,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.labAvgT = new System.Windows.Forms.Label();
+            this.lblAvg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtPrice
@@ -161,7 +163,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(5, 295);
+            this.label5.Location = new System.Drawing.Point(27, 293);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 19);
             this.label5.TabIndex = 26;
@@ -172,7 +174,7 @@
             this.lblTotalCount.AutoSize = true;
             this.lblTotalCount.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblTotalCount.ForeColor = System.Drawing.Color.Red;
-            this.lblTotalCount.Location = new System.Drawing.Point(86, 286);
+            this.lblTotalCount.Location = new System.Drawing.Point(97, 284);
             this.lblTotalCount.Name = "lblTotalCount";
             this.lblTotalCount.Size = new System.Drawing.Size(34, 35);
             this.lblTotalCount.TabIndex = 27;
@@ -183,7 +185,7 @@
             this.lblTotalMaoWeight.AutoSize = true;
             this.lblTotalMaoWeight.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblTotalMaoWeight.ForeColor = System.Drawing.Color.Blue;
-            this.lblTotalMaoWeight.Location = new System.Drawing.Point(92, 343);
+            this.lblTotalMaoWeight.Location = new System.Drawing.Point(99, 325);
             this.lblTotalMaoWeight.Name = "lblTotalMaoWeight";
             this.lblTotalMaoWeight.Size = new System.Drawing.Size(23, 24);
             this.lblTotalMaoWeight.TabIndex = 29;
@@ -193,7 +195,7 @@
             // 
             this.lblM.AutoSize = true;
             this.lblM.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblM.Location = new System.Drawing.Point(8, 346);
+            this.lblM.Location = new System.Drawing.Point(26, 329);
             this.lblM.Name = "lblM";
             this.lblM.Size = new System.Drawing.Size(80, 19);
             this.lblM.TabIndex = 28;
@@ -239,11 +241,34 @@
             this.label10.TabIndex = 33;
             this.label10.Text = "一行表示一条记录";
             // 
+            // labAvgT
+            // 
+            this.labAvgT.AutoSize = true;
+            this.labAvgT.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labAvgT.Location = new System.Drawing.Point(5, 364);
+            this.labAvgT.Name = "labAvgT";
+            this.labAvgT.Size = new System.Drawing.Size(100, 19);
+            this.labAvgT.TabIndex = 34;
+            this.labAvgT.Text = "平均毛重:";
+            // 
+            // lblAvg
+            // 
+            this.lblAvg.AutoSize = true;
+            this.lblAvg.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblAvg.ForeColor = System.Drawing.Color.Black;
+            this.lblAvg.Location = new System.Drawing.Point(97, 360);
+            this.lblAvg.Name = "lblAvg";
+            this.lblAvg.Size = new System.Drawing.Size(23, 24);
+            this.lblAvg.TabIndex = 35;
+            this.lblAvg.Text = "0";
+            // 
             // FormAddDetailBatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 671);
+            this.Controls.Add(this.lblAvg);
+            this.Controls.Add(this.labAvgT);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -298,5 +323,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labAvgT;
+        private System.Windows.Forms.Label lblAvg;
     }
 }

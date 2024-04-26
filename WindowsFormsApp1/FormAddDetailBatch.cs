@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using WindowsFormsApp1.Model;
 using WindowsFormsAppFruitCalc;
@@ -193,7 +194,7 @@ namespace WindowsFormsAppFruitCalc
                     var list = GetMaoWeightList();
                     lblTotalCount.Text = list.Count().ToString();
                     lblTotalMaoWeight.Text = list.Sum().ToString();
-
+                    lblAvg.Text = Math.Round((list.Sum() / list.Count()), 0, MidpointRounding.AwayFromZero).ToString();
                 }
             }
             catch (Exception ex)
