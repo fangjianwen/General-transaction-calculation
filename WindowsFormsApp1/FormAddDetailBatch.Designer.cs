@@ -137,7 +137,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(92, 21);
+            this.label6.Location = new System.Drawing.Point(92, 12);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 19);
             this.label6.TabIndex = 23;
@@ -147,7 +147,7 @@
             // 
             this.lblOrderName.AutoSize = true;
             this.lblOrderName.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblOrderName.Location = new System.Drawing.Point(212, 21);
+            this.lblOrderName.Location = new System.Drawing.Point(212, 14);
             this.lblOrderName.Name = "lblOrderName";
             this.lblOrderName.Size = new System.Drawing.Size(89, 19);
             this.lblOrderName.TabIndex = 24;
