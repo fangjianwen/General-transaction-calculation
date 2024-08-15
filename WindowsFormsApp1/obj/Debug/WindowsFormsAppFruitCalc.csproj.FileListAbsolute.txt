@@ -15,7 +15,6 @@ D:\Projects\FruitCalc\FruitCalc\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitC
 D:\Projects\General-transaction-calculation\WindowsFormsApp1\bin\Debug\WindowsFormsAppFruitCalc.exe.config
 D:\Projects\General-transaction-calculation\WindowsFormsApp1\bin\Debug\WindowsFormsAppFruitCalc.exe
 D:\Projects\General-transaction-calculation\WindowsFormsApp1\bin\Debug\WindowsFormsAppFruitCalc.pdb
-D:\Projects\General-transaction-calculation\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.csproj.AssemblyReference.cache
 D:\Projects\General-transaction-calculation\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.FormAbout.resources
 D:\Projects\General-transaction-calculation\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.FormAddDetailBatch.resources
 D:\Projects\General-transaction-calculation\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.FormEdit.resources
@@ -26,3 +25,4 @@ D:\Projects\General-transaction-calculation\WindowsFormsApp1\obj\Debug\WindowsFo
 D:\Projects\General-transaction-calculation\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.csproj.CoreCompileInputs.cache
 D:\Projects\General-transaction-calculation\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.exe
 D:\Projects\General-transaction-calculation\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.pdb
+D:\Projects\General-transaction-calculation\WindowsFormsApp1\obj\Debug\WindowsFormsAppFruitCalc.csprojAssemblyReference.cache

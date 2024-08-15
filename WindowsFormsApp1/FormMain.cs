@@ -159,7 +159,7 @@ namespace WindowsFormsAppFruitCalc
         public void BindComboxData()
         {
 
-            DataTable dt = BaseDal.ExecuteDataTable("Select distinct(OrderName) from OrderDetail", null);
+            DataTable dt = BaseDal.ExecuteDataTable("Select distinct(OrderName) from OrderDetail order by OrderName Desc", null);
             DataRow row = dt.NewRow();
             row["OrderName"] = "查看已有订单";
             dt.Rows.InsertAt(row, 0);

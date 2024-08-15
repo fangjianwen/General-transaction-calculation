@@ -150,6 +150,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Images\Edit.png" />
+    <Content Include="Images\icon.png" />
     <Content Include="Images\Menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

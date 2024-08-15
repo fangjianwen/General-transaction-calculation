@@ -185,18 +185,22 @@ namespace WindowsFormsAppFruitCalc
 
 
         private void rtbWeightList_TextChanged(object sender, EventArgs e)
-        {
+       {
             try
             {
                 var text = rtbWeightList.Text;
                 if (text.EndsWith("\n"))
                 {
                     var list = GetMaoWeightList();
-                    lblTotalCount.Text = list.Count().ToString();
-                    lblTotalMaoWeight.Text = list.Sum().ToString();
-                    lblAvg.Text = Math.Round((list.Sum() / list.Count()), 0, MidpointRounding.AwayFromZero).ToString();
-                    lblMax.Text = list.Max().ToString();
-                    lblMin.Text = list.Min().ToString();
+                    if (list.Count>0)
+                    {
+                        lblTotalCount.Text = list.Count().ToString();
+                        lblTotalMaoWeight.Text = list.Sum().ToString();
+                        lblAvg.Text = Math.Round((list.Sum() / list.Count()), 0, MidpointRounding.AwayFromZero).ToString();
+                        lblMax.Text = list.Max().ToString();
+                        lblMin.Text = list.Min().ToString();
+                    }
+
                 }
             }
             catch (Exception ex)
