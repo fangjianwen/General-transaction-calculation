@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.Model;
-using WindowsFormsAppFruitCalc;
 
 namespace WindowsFormsAppFruitCalc
 {
@@ -27,14 +28,14 @@ namespace WindowsFormsAppFruitCalc
             string orderName = txtOrderName.Text;
             if (string.IsNullOrEmpty(orderName))
             {
-                MessageBox.Show("请输入订单名称");
+                MessageBox.Show("请输入订单名称", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtOrderName.Focus();
                 return;
             }
 
             if (string.IsNullOrEmpty(txtSinglePackAgeWeight.Text))
             {
-                MessageBox.Show("请输入单个包装重量");
+                MessageBox.Show("请输入单个包装重量", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSinglePackAgeWeight.Focus();
                 return;
             }
@@ -42,13 +43,13 @@ namespace WindowsFormsAppFruitCalc
             decimal singlePackAgeWeight = 0;
             if (!decimal.TryParse(txtSinglePackAgeWeight.Text, out singlePackAgeWeight))
             {
-                MessageBox.Show("单个包装重量不正确");
+                MessageBox.Show("单个包装重量不正确", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSinglePackAgeWeight.Focus();
                 return;
             }
             if (singlePackAgeWeight < 0)
             {
-                MessageBox.Show("单个包装重量不能小于0");
+                MessageBox.Show("单个包装重量不能小于0", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSinglePackAgeWeight.Focus();
                 return;
             }
@@ -56,27 +57,27 @@ namespace WindowsFormsAppFruitCalc
 
             if (Common.GetDecimalPlaces(singlePackAgeWeight) > 2)
             {
-                MessageBox.Show("单个包装重量最多保留两位小数");
+                MessageBox.Show("单个包装重量最多保留两位小数", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSinglePackAgeWeight.Focus();
                 return;
             }
 
             if (string.IsNullOrEmpty(txtPackAgeCount.Text))
             {
-                MessageBox.Show("请输入每次称重包装数量");
+                MessageBox.Show("请输入每次称重包装数量", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPackAgeCount.Focus();
                 return;
             }
             int packAgeCount = 0;
             if (!int.TryParse(txtPackAgeCount.Text, out packAgeCount))
             {
-                MessageBox.Show("每次称重包装数量不正确");
+                MessageBox.Show("每次称重包装数量不正确", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPackAgeCount.Focus();
                 return;
             }
             if (packAgeCount < 0)
             {
-                MessageBox.Show("每次称重包装数量不能小于0");
+                MessageBox.Show("每次称重包装数量不能小于0", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPackAgeCount.Focus();
                 return;
             }
@@ -84,26 +85,26 @@ namespace WindowsFormsAppFruitCalc
 
             if (string.IsNullOrEmpty(txtPrice.Text))
             {
-                MessageBox.Show("请输入单价");
+                MessageBox.Show("请输入单价", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPrice.Focus();
                 return;
             }
             decimal price = 0;
             if (!decimal.TryParse(txtPrice.Text, out price))
             {
-                MessageBox.Show("单价不正确");
+                MessageBox.Show("单价不正确", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPrice.Focus();
                 return;
             }
             if (price <= 0)
             {
-                MessageBox.Show("单价必须大于0");
+                MessageBox.Show("单价必须大于0", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPrice.Focus();
                 return;
             }
             if (Common.GetDecimalPlaces(price) > 2)
             {
-                MessageBox.Show("单价最多保留两位小数");
+                MessageBox.Show("单价最多保留两位小数", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPrice.Focus();
                 return;
             }
@@ -113,8 +114,18 @@ namespace WindowsFormsAppFruitCalc
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
-            txtOrderName.Text = DateTime.Now.ToString("yyyy-MM-dd订单");
-            BindComboxData();
+            try
+            {
+                txtOrderName.Text = DateTime.Now.ToString("yyyy-MM-dd订单");
+                BindComboxData();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("数据库配置或连接异常:"+ex.ToString(), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+          
 
 
             //BaseDal.ExecuteNonQuery("delete from OrderDetail where ordername='2024-04-10订单'", null);
@@ -183,7 +194,7 @@ namespace WindowsFormsAppFruitCalc
                 LoadData();
                 MessageBox.Show("计算完成", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
+           
         }
         /// <summary>
         /// 订单选择改变,加载对应数据
@@ -215,12 +226,12 @@ namespace WindowsFormsAppFruitCalc
                 var rows = grvDetail.SelectedRows;
                 if (rows.Count == 0)
                 {
-                    MessageBox.Show("请先选择一条记录");
+                    MessageBox.Show("请先选择一条记录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (rows[0].Cells["Id"].Value == null)
                 {
-                    MessageBox.Show("请先选择一条记录");
+                    MessageBox.Show("请先选择一条记录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 var id = rows[0].Cells["Id"].Value.ToString();
@@ -234,7 +245,7 @@ namespace WindowsFormsAppFruitCalc
             }
             catch (Exception ex)
             {
-                MessageBox.Show("异常:" + ex.ToString());
+                MessageBox.Show("异常:" + ex.ToString(), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
@@ -247,12 +258,12 @@ namespace WindowsFormsAppFruitCalc
                 var rows = grvDetail.SelectedRows;
                 if (rows.Count == 0)
                 {
-                    MessageBox.Show("请先选择一条记录");
+                    MessageBox.Show("请先选择一条记录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (rows[0].Cells["Id"].Value == null)
                 {
-                    MessageBox.Show("请先选择一条记录");
+                    MessageBox.Show("请先选择一条记录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 var id = rows[0].Cells["Id"].Value.ToString();
@@ -280,12 +291,12 @@ namespace WindowsFormsAppFruitCalc
                 var rows = grvDetail.SelectedRows;
                 if (rows.Count == 0)
                 {
-                    MessageBox.Show("请先选择一条记录");
+                    MessageBox.Show("请先选择一条记录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (rows[0].Cells["Id"].Value == null)
                 {
-                    MessageBox.Show("请先选择一条记录");
+                    MessageBox.Show("请先选择一条记录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 var id = rows[0].Cells["Id"].Value.ToString();
@@ -321,7 +332,7 @@ namespace WindowsFormsAppFruitCalc
             }
             catch (Exception ex)
             {
-                MessageBox.Show("异常:" + ex.ToString());
+                MessageBox.Show("异常:" + ex.ToString(), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
@@ -359,42 +370,62 @@ namespace WindowsFormsAppFruitCalc
                     lblTotalAmountSql.Text = "0";
                     return;
                 }
-                lblTotalMaoWeight.Text = list.Sum(p => p.MaoWeight).ToString();
+
+                List<string> errList = new List<string>();
+
+                decimal totalMaoWeightL = list.Sum(p => p.MaoWeight);
+                lblTotalMaoWeight.Text = totalMaoWeightL.ToString();
                 decimal totalMaoWeight = decimal.Parse(BaseDal.ExecuteScalar(string.Format("Select Sum(MaoWeight) From [OrderDetail] Where OrderName=@OrderName"), parList).ToString());
-                if (decimal.Parse(lblTotalMaoWeight.Text) != totalMaoWeight)
-                {
-                    MessageBox.Show("【总毛重】 有偏差,请点击 计算 按钮", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (totalMaoWeightL != totalMaoWeight)
+                {                 
+                    errList.Add("【总毛重】");
                 }
-                lblTotalPackAgeWeight.Text = list.Sum(p => p.TotalPackAgeWeight).ToString();
+
+                decimal totalPackAgeWeightL = list.Sum(p => p.TotalPackAgeWeight);
+                lblTotalPackAgeWeight.Text = totalPackAgeWeightL.ToString();
                 decimal totalPackAgeWeight = decimal.Parse(BaseDal.ExecuteScalar(string.Format("Select Sum(SinglePackAgeWeight*PackAgeCount) From [OrderDetail] Where OrderName=@OrderName"), parList).ToString());
-                if (decimal.Parse(lblTotalPackAgeWeight.Text) != totalPackAgeWeight)
+                if (totalPackAgeWeightL != totalPackAgeWeight)
                 {
-                    MessageBox.Show("【总皮重】 有偏差,请点击 计算 按钮", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                    errList.Add("【总皮重】");
                 }
-                lblTotalPackAgeCount.Text = list.Sum(p => p.PackAgeCount).ToString();
+
+                decimal totalPackAgeCountL= list.Sum(p => p.PackAgeCount);
+                lblTotalPackAgeCount.Text = totalPackAgeCountL.ToString();
                 int totalPackAgeCount = int.Parse(BaseDal.ExecuteScalar(string.Format("Select Sum(PackAgeCount) From [OrderDetail] Where OrderName=@OrderName"), parList).ToString());
-                if (int.Parse(lblTotalPackAgeCount.Text) != totalPackAgeCount)
-                {
-                    MessageBox.Show("【总包装数量】 有偏差,请点击 计算 按钮", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (totalPackAgeCountL != totalPackAgeCount)
+                {                 
+                    errList.Add("【总包装数量】");
                 }
-                lblCount.Text = list.Count.ToString();
+
+                int totalCountL = list.Count;
+                lblCount.Text = totalCountL.ToString();
                 int totalCount = int.Parse(BaseDal.ExecuteScalar(string.Format("Select Count(1) From [OrderDetail] Where OrderName=@OrderName"), parList).ToString());
-                if (int.Parse(lblCount.Text) != totalCount)
-                {
-                    MessageBox.Show("【头数】 有偏差,请点击 计算 按钮", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (totalCountL != totalCount)
+                {                  
+                    errList.Add("【记录数】");
                 }
-                lblTotalRealWeight.Text = list.Sum(p => p.RealWeight).ToString();
+                 decimal totalRealWeightL = list.Sum(p => p.RealWeight);
+                lblTotalRealWeight.Text = totalRealWeightL.ToString();
                 decimal totalRealWeight = decimal.Parse(BaseDal.ExecuteScalar(string.Format("Select Sum(MaoWeight-(SinglePackAgeWeight*PackAgeCount)) From [OrderDetail] Where OrderName=@OrderName"), parList).ToString());
-                if (decimal.Parse(lblTotalRealWeight.Text) != totalRealWeight)
-                {
-                    MessageBox.Show("【总净重】 有偏差,请点击 计算 按钮", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (totalRealWeightL != totalRealWeight)
+                {                  
+                    errList.Add("【总净重】");
                 }
-                lblTotalAmount.Text = Math.Round(list.Sum(p => p.Amount), 2, MidpointRounding.AwayFromZero).ToString();//四舍五入 保留两位小数                                                                                                                      
+                decimal totalAmountL = Math.Round(list.Sum(p => p.Amount), 2, MidpointRounding.AwayFromZero);//四舍五入 保留两位小数 
+                lblTotalAmount.Text = totalAmountL.ToString();
                 decimal totalAmount = decimal.Parse(BaseDal.ExecuteScalar(string.Format("Select Sum((MaoWeight-(SinglePackAgeWeight*PackAgeCount))*Price) From [OrderDetail] Where OrderName=@OrderName"), parList).ToString());
-                lblTotalAmountSql.Text = Math.Round(totalAmount, 2, MidpointRounding.AwayFromZero).ToString();//sql 计算的总金额  四舍五入 保留两位小数                
-                if (lblTotalAmount.Text!= lblTotalAmountSql.Text)
+                decimal totalAmountR= Math.Round(totalAmount, 2, MidpointRounding.AwayFromZero);//sql 计算的总金额  四舍五入 保留两位小数                
+                lblTotalAmountSql.Text = totalAmountR.ToString();
+                if (totalAmountL != totalAmountR)
                 {
-                    MessageBox.Show("【总金额】 有偏差,请点击 计算 按钮", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   
+                    errList.Add("【总金额】");
+                }
+
+                if (errList.Count>0)
+                {
+                    MessageBox.Show(string.Format("{0}有偏差,请点击 计算 按钮",string.Join(",",errList.ToArray())), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -418,7 +449,7 @@ namespace WindowsFormsAppFruitCalc
                 List<OrderDetail> list = BaseDal.GetList<OrderDetail>(string.Format("OrderName=@OrderName Order By Id ASC"), parList);
                 foreach (var model in list)
                 {
-                    model.TotalPackAgeWeight = Math.Round(model.SinglePackAgeWeight * model.PackAgeCount, 2, MidpointRounding.AwayFromZero);//四舍五入                  
+                    model.TotalPackAgeWeight = Math.Round(model.SinglePackAgeWeight * (decimal)model.PackAgeCount, 2, MidpointRounding.AwayFromZero);//四舍五入                  
                     model.RealWeight = Math.Round((model.MaoWeight - model.TotalPackAgeWeight), 2, MidpointRounding.AwayFromZero);//四舍五入
                     model.Amount = Math.Round(model.RealWeight * model.Price, 4, MidpointRounding.AwayFromZero);//四舍五入                   
                 }
@@ -451,14 +482,14 @@ namespace WindowsFormsAppFruitCalc
             string orderName = txtOrderName.Text;
             if (string.IsNullOrEmpty(orderName))
             {
-                MessageBox.Show("请输入订单名称");
+                MessageBox.Show("请输入订单名称", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtOrderName.Focus();
                 return;
             }
 
             if (string.IsNullOrEmpty(txtSinglePackAgeWeight.Text))
             {
-                MessageBox.Show("请输入单个包装重量");
+                MessageBox.Show("请输入单个包装重量", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSinglePackAgeWeight.Focus();
                 return;
             }
@@ -466,13 +497,13 @@ namespace WindowsFormsAppFruitCalc
             decimal singlePackAgeWeight = 0;
             if (!decimal.TryParse(txtSinglePackAgeWeight.Text, out singlePackAgeWeight))
             {
-                MessageBox.Show("单个包装重量不正确");
+                MessageBox.Show("单个包装重量不正确", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSinglePackAgeWeight.Focus();
                 return;
             }
             if (singlePackAgeWeight < 0)
             {
-                MessageBox.Show("单个包装重量不能小于0");
+                MessageBox.Show("单个包装重量不能小于0", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSinglePackAgeWeight.Focus();
                 return;
             }
@@ -480,27 +511,27 @@ namespace WindowsFormsAppFruitCalc
 
             if (Common.GetDecimalPlaces(singlePackAgeWeight) > 2)
             {
-                MessageBox.Show("单个包装重量最多保留两位小数");
+                MessageBox.Show("单个包装重量最多保留两位小数", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSinglePackAgeWeight.Focus();
                 return;
             }
 
             if (string.IsNullOrEmpty(txtPackAgeCount.Text))
             {
-                MessageBox.Show("请输入每次称重包装数量");
+                MessageBox.Show("请输入每次称重包装数量", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPackAgeCount.Focus();
                 return;
             }
             int packAgeCount = 0;
             if (!int.TryParse(txtPackAgeCount.Text, out packAgeCount))
             {
-                MessageBox.Show("每次称重包装数量不正确");
+                MessageBox.Show("每次称重包装数量不正确", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPackAgeCount.Focus();
                 return;
             }
             if (packAgeCount < 0)
             {
-                MessageBox.Show("每次称重包装数量不能小于0");
+                MessageBox.Show("每次称重包装数量不能小于0", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPackAgeCount.Focus();
                 return;
             }
@@ -508,32 +539,115 @@ namespace WindowsFormsAppFruitCalc
 
             if (string.IsNullOrEmpty(txtPrice.Text))
             {
-                MessageBox.Show("请输入单价");
+                MessageBox.Show("请输入单价", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPrice.Focus();
                 return;
             }
             decimal price = 0;
             if (!decimal.TryParse(txtPrice.Text, out price))
             {
-                MessageBox.Show("单价不正确");
+                MessageBox.Show("单价不正确", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPrice.Focus();
                 return;
             }
             if (price <= 0)
             {
-                MessageBox.Show("单价必须大于0");
+                MessageBox.Show("单价必须大于0", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPrice.Focus();
                 return;
             }
             if (Common.GetDecimalPlaces(price) > 2)
             {
-                MessageBox.Show("单价最多保留两位小数");
+                MessageBox.Show("单价最多保留两位小数", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPrice.Focus();
                 return;
             }
 
             FormAddDetailBatch form = new FormAddDetailBatch(orderName, singlePackAgeWeight, packAgeCount, price);
             form.Show();
+        }
+
+        /// <summary>
+        /// 导出Excel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (string.IsNullOrEmpty(txtOrderName.Text))
+                {
+
+                    MessageBox.Show("请先选择订单", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                List<SqlParameter> parList = new List<SqlParameter>
+                {
+                    new SqlParameter("@OrderName", txtOrderName.Text)
+                };              
+                DataTable dataTable = BaseDal.ExecuteDataTable(string.Format("select OrderName, ROW_NUMBER()  OVER (ORDER BY Id Asc) AS Num,SinglePackAgeWeight,PackAgeCount,MaoWeight, TotalPackAgeWeight,RealWeight,Price, Amount,Remark from OrderDetail where OrderName=@OrderName"), parList);
+                           
+                if (dataTable.Rows.Count == 0)
+                {
+
+                    MessageBox.Show("没有可以导出的数据", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                DataRow rowSummary = dataTable.NewRow();
+               
+                rowSummary["OrderName"] = "统计";
+                rowSummary["PackAgeCount"] = int.Parse(BaseDal.ExecuteScalar(string.Format("Select Sum(PackAgeCount) From [OrderDetail] Where OrderName=@OrderName"), parList).ToString());
+                rowSummary["TotalPackAgeWeight"] = decimal.Parse(BaseDal.ExecuteScalar(string.Format("Select Sum(SinglePackAgeWeight*PackAgeCount) From [OrderDetail] Where OrderName=@OrderName"), parList).ToString());
+                rowSummary["MaoWeight"] = decimal.Parse(BaseDal.ExecuteScalar(string.Format("Select Sum(MaoWeight) From [OrderDetail] Where OrderName=@OrderName"), parList).ToString());
+                rowSummary["RealWeight"] = decimal.Parse(BaseDal.ExecuteScalar(string.Format("Select Sum(MaoWeight-(SinglePackAgeWeight*PackAgeCount)) From [OrderDetail] Where OrderName=@OrderName"), parList).ToString());
+                rowSummary["Amount"] = Math.Round(decimal.Parse(BaseDal.ExecuteScalar(string.Format("Select Sum((MaoWeight-(SinglePackAgeWeight*PackAgeCount))*Price) From [OrderDetail] Where OrderName=@OrderName"), parList).ToString()), 2, MidpointRounding.AwayFromZero).ToString(); 
+                dataTable.Rows.Add(rowSummary);
+
+                Dictionary<string, string> colMap = new Dictionary<string, string>();              
+                colMap.Add("OrderName", "订单名称");
+                colMap.Add("Num", "序号");
+                colMap.Add("SinglePackAgeWeight", "单个包装重量");
+                colMap.Add("PackAgeCount", "包装数量");             
+                colMap.Add("MaoWeight", "毛重");
+                colMap.Add("TotalPackAgeWeight", "皮重");
+                colMap.Add("RealWeight", "净重");
+                colMap.Add("Price", "单价");
+                colMap.Add("Amount", "金额小计");
+                colMap.Add("Remark", "备注");
+               
+                if (!Directory.Exists(System.AppDomain.CurrentDomain.BaseDirectory + @"\Files" ))
+                {
+                    Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + @"\Files");
+                }
+                string fileName = string.Format("{0}导出", txtOrderName.Text);
+                string filePath = AppDomain.CurrentDomain.BaseDirectory + string.Format(@"\Files\{0}.xls", fileName);
+                ExcelExport.ExportToFile(dataTable, colMap, filePath);          
+                OpenFile(filePath);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("导出异常:"+ex.ToString(), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+          
+        }
+
+        /// <summary>
+        /// 打开文件
+        /// </summary>
+        /// <param name="filePath"></param>
+        private void OpenFile(string filePath) 
+        {
+            Process process = new Process();
+            ProcessStartInfo psi = new ProcessStartInfo(filePath);
+            process.StartInfo = psi;
+            process.Start();
+
         }
         //private void button1_Click(object sender, EventArgs e)
         //{

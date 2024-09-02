@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using WindowsFormsApp1.Model;
-using WindowsFormsAppFruitCalc;
 
 namespace WindowsFormsAppFruitCalc
 {
@@ -56,7 +55,7 @@ namespace WindowsFormsAppFruitCalc
             {
                 if (string.IsNullOrEmpty(OrderName))
                 {
-                    MessageBox.Show("请输入订单名称");
+                    MessageBox.Show("请输入订单名称", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return;
                 }
@@ -64,32 +63,32 @@ namespace WindowsFormsAppFruitCalc
                 decimal singlePackAgeWeight = 0;
                 if (!decimal.TryParse(txtSinglePackAgeWeight.Text, out singlePackAgeWeight))
                 {
-                    MessageBox.Show("单个包装重量不正确");
+                    MessageBox.Show("单个包装重量不正确", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtSinglePackAgeWeight.Focus();
                     return;
                 }
                 if (singlePackAgeWeight < 0)
                 {
-                    MessageBox.Show("单个包装重量不能小于0");
+                    MessageBox.Show("单个包装重量不能小于0", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtSinglePackAgeWeight.Focus();
                     return;
                 }
                 if (Common.GetDecimalPlaces(singlePackAgeWeight) > 2)
                 {
-                    MessageBox.Show("单个包装重量最多保留两位小数");
+                    MessageBox.Show("单个包装重量最多保留两位小数", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtSinglePackAgeWeight.Focus();
                     return;
                 }
                 int packAgeCount = 0;
                 if (!int.TryParse(txtPackAgeCount.Text, out packAgeCount))
                 {
-                    MessageBox.Show("包装数量不正确");
+                    MessageBox.Show("包装数量不正确", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtPackAgeCount.Focus();
                     return;
                 }
                 if (packAgeCount<0)
                 {
-                    MessageBox.Show("包装数量不能小于0");
+                    MessageBox.Show("包装数量不能小于0", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtPackAgeCount.Focus();
                     return;
                 }
@@ -97,19 +96,19 @@ namespace WindowsFormsAppFruitCalc
                 decimal price = 0;
                 if (!decimal.TryParse(txtPrice.Text, out price))
                 {
-                    MessageBox.Show("单价不正确");
+                    MessageBox.Show("单价不正确", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtPrice.Focus();
                     return;
                 }
                 if (price <= 0)
                 {
-                    MessageBox.Show("单价必须大于0");
+                    MessageBox.Show("单价必须大于0", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtPrice.Focus();
                     return;
                 }
                 if (Common.GetDecimalPlaces(price) > 2)
                 {
-                    MessageBox.Show("单价最多保留两位小数");
+                    MessageBox.Show("单价最多保留两位小数", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtPrice.Focus();
                     return;
                 }
@@ -117,25 +116,25 @@ namespace WindowsFormsAppFruitCalc
                 decimal weight = 0;
                 if (!decimal.TryParse(txtWeight.Text, out weight))
                 {
-                    MessageBox.Show("重量不正确");
+                    MessageBox.Show("重量不正确", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtWeight.Focus();
                     return;
                 }
 
                 if (weight <= 0)
                 {
-                    MessageBox.Show("重量必须大于0");
+                    MessageBox.Show("重量必须大于0", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtWeight.Focus();
                     return;
                 }
                 if (Common.GetDecimalPlaces(weight) > 2)
                 {
-                    MessageBox.Show("重量最多保留两位小数");
+                    MessageBox.Show("重量最多保留两位小数", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtWeight.Focus();
                     return;
                 }
 
-                if (MessageBox.Show("确认添加称重记录?", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                if (MessageBox.Show("确认添加称重记录?", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
 
                     OrderDetail model = new OrderDetail();
@@ -152,7 +151,7 @@ namespace WindowsFormsAppFruitCalc
 
                     if (model.RealWeight<=0)
                     {
-                        MessageBox.Show("净重必须大于0,请检查");                      
+                        MessageBox.Show("净重必须大于0,请检查", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);                      
                         return;
                     }
 
